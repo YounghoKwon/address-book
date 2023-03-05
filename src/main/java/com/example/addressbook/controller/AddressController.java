@@ -2,6 +2,8 @@ package com.example.addressbook.controller;
 
 import com.example.addressbook.facade.AddressFacade;
 import com.example.addressbook.facade.request.AddAddressRequest;
+import com.example.addressbook.facade.request.ModifyAddressRequest;
+import com.example.addressbook.facade.response.AddressInfoResponse;
 import com.example.addressbook.facade.response.AddressListResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,12 @@ public class AddressController {
         return ResponseEntity.ok(addressFacade.getList(searchText, pageable));
     }
 
+    @GetMapping("/{idx}")
+    public ResponseEntity<AddressInfoResponse> getAddress(@PathVariable("idx") final long idx) {
+        return ResponseEntity.ok(addressFacade.getInfo(idx));
+    }
+
+
     @PostMapping("/")
     public ResponseEntity<Object> insertAddress(
             @Valid @RequestBody final AddAddressRequest addAddressRequest) {
@@ -30,8 +38,15 @@ public class AddressController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping ("/{idx}")
-    public ResponseEntity<Object> deleteAddress(@PathVariable("idx")final long idx) {
+    @PatchMapping("/")
+    public ResponseEntity<Object> modifyAddress(
+            @Valid @RequestBody final ModifyAddressRequest modifyAddressRequest) {
+        addressFacade.modify(modifyAddressRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{idx}")
+    public ResponseEntity<Object> deleteAddress(@PathVariable("idx") final long idx) {
         addressFacade.delete(idx);
         return ResponseEntity.ok().build();
     }

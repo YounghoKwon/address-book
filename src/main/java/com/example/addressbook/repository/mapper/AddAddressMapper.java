@@ -7,6 +7,7 @@ import lombok.Value;
 @Value
 @AllArgsConstructor
 public class AddAddressMapper {
+
     Long idx;
 
     String name;
