@@ -4,7 +4,9 @@ import lombok.Value;
 
 @Value
 public class AddressListMapper {
+
     long idx;
     String name;
     Integer cellPhone;
+
 }

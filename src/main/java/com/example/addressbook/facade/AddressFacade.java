@@ -9,15 +9,15 @@ import com.example.addressbook.repository.mapper.AddressInfoMapper;
 import com.example.addressbook.repository.mapper.AddressListMapper;
 import com.example.addressbook.repository.mapper.ModifyAddressMapper;
 import com.example.addressbook.service.AddressService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 @RequiredArgsConstructor
 public class AddressFacade {
+
     private final AddressService addressService;
 
     public List<AddressListResponse> getList(final String searchText, final Pageable pageable) {
@@ -26,7 +26,8 @@ public class AddressFacade {
     }
 
     public void add(final AddAddressRequest addAddressRequest) {
-        final AddAddressMapper mapper = AddAddressMapper.of(addAddressRequest.getName(), addAddressRequest.getCellPhone());
+        final AddAddressMapper mapper = AddAddressMapper.of(addAddressRequest.getName(),
+            addAddressRequest.getCellPhone());
         addressService.add(mapper);
     }
 
@@ -36,13 +37,13 @@ public class AddressFacade {
 
     public void modify(final ModifyAddressRequest modifyAddressRequest) {
         final ModifyAddressMapper mapper = ModifyAddressMapper.of(modifyAddressRequest.getIdx(),
-                modifyAddressRequest.getName(), modifyAddressRequest.getCellPhone());
+            modifyAddressRequest.getName(), modifyAddressRequest.getCellPhone());
         addressService.modify(mapper);
     }
 
     public AddressInfoResponse getInfo(final long idx) {
         final AddressInfoMapper addressInfo = addressService.getAddressInfo(idx);
         return new AddressInfoResponse(addressInfo.getIdx(), addressInfo.getName(),
-                addressInfo.getCellPhone(), addressInfo.getUpdateTime(), addressInfo.getCreateTime());
+            addressInfo.getCellPhone(), addressInfo.getUpdateTime(), addressInfo.getCreateTime());
     }
 }

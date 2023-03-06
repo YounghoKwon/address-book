@@ -12,38 +12,39 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AddressService {
-    private final AddressJpaRepository addressAdapter;
+
+    private final AddressJpaRepository addressRepository;
 
     public AddressListMapper getList(final String searchText, final Pageable pageable) {
         return null;
     }
 
     public void add(final AddAddressMapper addAddressMapper) {
-        addressAdapter.save(addAddressMapper.addressCreate());
+        addressRepository.save(addAddressMapper.addressCreate());
     }
 
     public void delete(final long idx) {
         if (!existsAddress(idx)) {
             throw new IllegalArgumentException("존재 하지 않은 주소록 입니다.");
         }
-        addressAdapter.deleteById(idx);
+        addressRepository.deleteById(idx);
     }
 
     private boolean existsAddress(final long idx) {
-        return addressAdapter.existsById(idx);
+        return addressRepository.existsById(idx);
     }
 
     public AddressInfoMapper getAddressInfo(final long idx) {
-        return addressAdapter.findById(idx)
-                .map(AddressInfoMapper::create)
-                .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 주소록 입니다."));
+        return addressRepository.findById(idx)
+            .map(AddressInfoMapper::create)
+            .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 주소록 입니다."));
     }
 
     public void modify(final ModifyAddressMapper modifyAddressMapper) {
         if (!existsAddress(modifyAddressMapper.getIdx())) {
             throw new IllegalArgumentException("존재 하지 않은 주소록 입니다.");
         }
-        addressAdapter.save(modifyAddressMapper.addressCreate());
+        addressRepository.save(modifyAddressMapper.addressCreate());
     }
 
 }

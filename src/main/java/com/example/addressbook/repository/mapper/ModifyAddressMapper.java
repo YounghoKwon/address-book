@@ -5,6 +5,7 @@ import lombok.Value;
 
 @Value
 public class ModifyAddressMapper {
+
     Long idx;
 
     String name;
@@ -15,7 +16,7 @@ public class ModifyAddressMapper {
         return new ModifyAddressMapper(idx, name, cellPhone);
     }
 
-    public Address addressCreate(){
+    public Address addressCreate() {
         return new Address(idx, name, cellPhone);
     }
 }

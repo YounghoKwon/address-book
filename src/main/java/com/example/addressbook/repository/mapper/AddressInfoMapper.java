@@ -1,12 +1,12 @@
 package com.example.addressbook.repository.mapper;
 
 import com.example.addressbook.entity.Address;
-import lombok.Value;
-
 import java.time.LocalDateTime;
+import lombok.Value;
 
 @Value
 public class AddressInfoMapper {
+
     Long idx;
 
     String name;
@@ -19,7 +19,7 @@ public class AddressInfoMapper {
 
     public static AddressInfoMapper create(final Address address) {
         return new AddressInfoMapper(address.getIdx(), address.getName(),
-                address.getCellPhone(), address.getUpdateTime(), address.getCreateTime());
+            address.getCellPhone(), address.getUpdateTime(), address.getCreateTime());
     }
 
 }

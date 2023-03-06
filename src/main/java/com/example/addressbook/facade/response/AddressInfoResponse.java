@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Value
 public class AddressInfoResponse {
+
     Long idx;
 
     String name;
@@ -15,4 +16,5 @@ public class AddressInfoResponse {
     LocalDateTime updateTime;
 
     LocalDateTime createTime;
+
 }
