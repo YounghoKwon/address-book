@@ -26,7 +26,7 @@ class AddressServiceTest {
     @Test
     @DisplayName("주소록 수정 시 IllegalArgumentException 확인")
     void modify_IllegalArgumentException() {
-        ModifyAddressMapper modifyAddressMapper = new ModifyAddressMapper(1L, "홍길동",01065303466);
+        ModifyAddressMapper modifyAddressMapper = new ModifyAddressMapper(1L, "홍길동","01065303466");
         Mockito.when(addressJpaRepository.existsById(1L)).thenReturn(false);
         Assertions.assertThatThrownBy(() -> addressService.modify(modifyAddressMapper))
             .hasMessage("존재 하지 않은 주소록 입니다.")

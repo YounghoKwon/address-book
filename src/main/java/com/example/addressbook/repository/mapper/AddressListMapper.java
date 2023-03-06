@@ -7,6 +7,6 @@ public class AddressListMapper {
 
     long idx;
     String name;
-    Integer cellPhone;
+    String cellPhone;
 
 }

@@ -21,3 +21,7 @@ spring:
 server:
   error:
     include-stacktrace: never
+
+mybatis:
+  type-aliases-package: com.example.addressbook.repository
+  mapper-locations: classpath:static/address.xml

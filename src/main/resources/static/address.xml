@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.addressbook.repository.AddressMybatisRepository">
+
+    <select id="findById" resultType="com.example.addressbook.entity.Address">
+        SELECT idx,
+               name,
+               cell_phone  AS cellPhone,
+               update_time AS updateTime,
+               create_time AS createTime
+        FROM ADDRESS
+        <![CDATA[
+        WHERE idx = #{idx}
+        ]]>
+    </select>
+
+    <select id="listCnt" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM ADDRESS
+          <![CDATA[
+        WHERE name LIKE '%' + #{map.searchText} + '%'
+           OR cell_phone LIKE '%' + #{map.searchText} + '%'
+        ]]>
+    </select>
+
+    <select id="getList" parameterType="map" resultType="map">
+        SELECT idx,
+               name,
+               cell_phone AS cellPhone
+        FROM ADDRESS
+           <![CDATA[
+        WHERE name LIKE '%${searchText}%'
+           OR cell_phone LIKE '%${searchText}%'
+        ]]>
+        ORDER BY idx DESC
+            LIMIT ${offset}, ${pageSize}
+    </select>
+
+</mapper>

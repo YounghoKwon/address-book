@@ -9,6 +9,6 @@ public class AddressListResponse {
 
     String name;
 
-    Integer cellPhone;
+    String cellPhone;
 
 }

@@ -10,7 +10,7 @@ class ModifyAddressMapperTest {
     @Test
     @DisplayName("ModifyAddressMapper 생성 테스트")
     void of(){
-        ModifyAddressMapper modifyAddressMapper = ModifyAddressMapper.of(1, "홍길동", 01011114444);
+        ModifyAddressMapper modifyAddressMapper = ModifyAddressMapper.of(1, "홍길동", "01011114444");
         Assertions.assertThat(modifyAddressMapper.getIdx()).isEqualTo(1);
     }
 }

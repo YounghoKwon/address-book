@@ -10,9 +10,9 @@ public class ModifyAddressMapper {
 
     String name;
 
-    Integer cellPhone;
+    String cellPhone;
 
-    public static ModifyAddressMapper of(final long idx, final String name, final int cellPhone) {
+    public static ModifyAddressMapper of(final long idx, final String name, final String cellPhone) {
         return new ModifyAddressMapper(idx, name, cellPhone);
     }
 

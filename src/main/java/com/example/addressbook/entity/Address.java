@@ -1,5 +1,6 @@
 package com.example.addressbook.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -25,15 +26,18 @@ public class Address {
 
     private String name;
 
-    private Integer cellPhone;
+    @Column(name = "cell_phone")
+    private String cellPhone;
 
     @LastModifiedDate
+    @Column(name = "update_time")
     private LocalDateTime updateTime;
 
     @CreatedDate
+    @Column(name = "create_time")
     private LocalDateTime createTime;
 
-    public Address(Long idx, String name, Integer cellPhone) {
+    public Address(final Long idx, final String name, final String cellPhone) {
         this.idx = idx;
         this.name = name;
         this.cellPhone = cellPhone;

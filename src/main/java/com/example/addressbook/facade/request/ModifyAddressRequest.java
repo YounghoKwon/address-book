@@ -18,5 +18,5 @@ public class ModifyAddressRequest {
     @NotNull(message = "핸드폰번호는 필수 값입니다.")
     @Pattern(regexp = "^01(?:0|1|[6-9])?([0-9]{3,4})?([0-9]{4})$",
         message = "휴대폰 번호 입력방식이 잘못되었습니다.")
-    Integer cellPhone;
+    String cellPhone;
 }

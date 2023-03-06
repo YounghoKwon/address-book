@@ -12,9 +12,9 @@ class AddressInfoMapperTest {
     @DisplayName("AddressInfoMapper 생성 테스트")
     void addressCreate() {
         Address address = BDDMockito.mock(Address.class);
-        BDDMockito.when(address.getCellPhone()).thenReturn(010111122222);
+        BDDMockito.when(address.getCellPhone()).thenReturn("010111122222");
         AddressInfoMapper addressInfoMapper = AddressInfoMapper.create(address);
-        Assertions.assertThat(addressInfoMapper.getCellPhone()).isEqualTo(010111122222);
+        Assertions.assertThat(addressInfoMapper.getCellPhone()).isEqualTo("010111122222");
     }
 
 }

@@ -11,7 +11,7 @@ public class AddressInfoMapper {
 
     String name;
 
-    Integer cellPhone;
+    String cellPhone;
 
     LocalDateTime updateTime;
 

@@ -10,9 +10,9 @@ public class AddAddressMapper {
 
     String name;
 
-    Integer cellPhone;
+    String cellPhone;
 
-    public static AddAddressMapper of(final String name, final Integer cellPhone) {
+    public static AddAddressMapper of(final String name, final String cellPhone) {
         return new AddAddressMapper(name, cellPhone);
     }
 

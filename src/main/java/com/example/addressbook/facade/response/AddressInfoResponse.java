@@ -11,7 +11,7 @@ public class AddressInfoResponse {
 
     String name;
 
-    Integer cellPhone;
+    String cellPhone;
 
     LocalDateTime updateTime;
 

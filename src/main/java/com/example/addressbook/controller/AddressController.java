@@ -8,6 +8,7 @@ import com.example.addressbook.facade.response.AddressListResponse;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +29,7 @@ public class AddressController {
     private final AddressFacade addressFacade;
 
     @GetMapping
-    public ResponseEntity<List<AddressListResponse>> getList(
+    public ResponseEntity<Page<AddressListResponse>> getList(
         @RequestParam(name = "searchText", required = false) final String searchText,
         final Pageable pageable) {
         return ResponseEntity.ok(addressFacade.getList(searchText, pageable));
